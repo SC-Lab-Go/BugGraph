@@ -1,6 +1,6 @@
 # BugGraph: Differentiating Source-Binary Code Similarity with Graph Triplet-Loss Network
 
-This is the repository for our BugGraph project. Here are the [Paper](include/paper/.pdf) and [Slides](include/paper/iSpan_slides.pdf) at AsiaCCS'21.
+This is the repository for our BugGraph project. Here are the [Paper](include/paper/21_AsiaCCS_BugGraph.pdf) and [Slides](include/paper/21_AsiaCCS_BugGraph_slides.pdf) at AsiaCCS'21.
 
 ## Introduction
 
