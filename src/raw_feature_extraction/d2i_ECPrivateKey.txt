@@ -1,0 +1,319 @@
+push    edi
+push    esi
+sub     esp, 0C4h
+mov     eax, [esp+0CCh+arg_8]
+mov     ecx, [esp+0CCh+arg_4]
+mov     edx, [esp+0CCh+arg_0]
+mov     esi, 0
+mov     [esp+0CCh+var_10], edx
+mov     [esp+0CCh+var_14], ecx
+mov     [esp+0CCh+var_18], eax
+mov     [esp+0CCh+var_1C], 0
+mov     [esp+0CCh+var_20], 0
+mov     [esp+0CCh+var_24], 0
+mov     eax, [esp+0CCh+var_14]
+mov     ecx, [esp+0CCh+var_18]
+mov     [esp+0CCh+var_CC], 0
+mov     [esp+0CCh+var_C8], eax
+mov     [esp+0CCh+var_C4], ecx
+mov     [esp+0CCh+var_30], esi
+call    d2i_EC_PRIVATEKEY
+mov     [esp+0CCh+var_24], eax
+cmp     eax, 0
+jnz     loc_818D015
+mov     eax, 10h
+mov     ecx, 92h
+lea     edx, aEc_asn1_c ; "ec_asn1.c"
+mov     esi, 3FDh
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 10h
+mov     [esp+0CCh+var_C0], edx
+mov     [esp+0CCh+var_BC], 3FDh
+mov     [esp+0CCh+var_34], eax
+mov     [esp+0CCh+var_38], ecx
+mov     [esp+0CCh+var_3C], esi
+call    ERR_put_error
+mov     [esp+0CCh+var_C], 0
+jmp     loc_818D628
+cmp     [esp+0CCh+var_10], 0
+jz      loc_818D039
+mov     eax, [esp+0CCh+var_10]
+cmp     dword ptr [eax], 0
+jnz     loc_818D0B8
+call    EC_KEY_new
+mov     [esp+0CCh+var_20], eax
+cmp     eax, 0
+jnz     loc_818D0B3
+mov     eax, 10h
+mov     ecx, 92h
+mov     edx, 41h
+lea     esi, aEc_asn1_c ; "ec_asn1.c"
+mov     edi, 403h
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 41h
+mov     [esp+0CCh+var_C0], esi
+mov     [esp+0CCh+var_BC], 403h
+mov     [esp+0CCh+var_40], eax
+mov     [esp+0CCh+var_44], ecx
+mov     [esp+0CCh+var_48], edx
+mov     [esp+0CCh+var_4C], edi
+call    ERR_put_error
+jmp     loc_818D597
+jmp     loc_818D0C8
+mov     eax, [esp+0CCh+var_10]
+mov     eax, [eax]
+mov     [esp+0CCh+var_20], eax
+mov     eax, [esp+0CCh+var_24]
+cmp     dword ptr [eax+8], 0
+jz      loc_818D11E
+mov     eax, [esp+0CCh+var_20]
+cmp     dword ptr [eax+4], 0
+jz      loc_818D102
+mov     eax, [esp+0CCh+var_20]
+mov     eax, [eax+4]
+mov     [esp+0CCh+var_CC], eax
+call    EC_GROUP_clear_free
+mov     eax, [esp+0CCh+var_24]
+mov     eax, [eax+8]
+mov     [esp+0CCh+var_CC], eax
+call    ec_asn1_pkparameters2group
+mov     ecx, [esp+0CCh+var_20]
+mov     [ecx+4], eax
+mov     eax, [esp+0CCh+var_20]
+cmp     dword ptr [eax+4], 0
+jnz     loc_818D180
+mov     eax, 10h
+mov     ecx, 92h
+lea     edx, aEc_asn1_c ; "ec_asn1.c"
+mov     esi, 410h
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 10h
+mov     [esp+0CCh+var_C0], edx
+mov     [esp+0CCh+var_BC], 410h
+mov     [esp+0CCh+var_50], eax
+mov     [esp+0CCh+var_54], ecx
+mov     [esp+0CCh+var_58], esi
+call    ERR_put_error
+jmp     loc_818D597
+mov     eax, [esp+0CCh+var_24]
+mov     eax, [eax]
+mov     ecx, [esp+0CCh+var_20]
+mov     [ecx], eax
+mov     eax, [esp+0CCh+var_24]
+cmp     dword ptr [eax+4], 0
+jz      loc_818D253
+mov     eax, [esp+0CCh+var_24]
+mov     eax, [eax+4]
+mov     eax, [eax+8]
+mov     ecx, [esp+0CCh+var_24]
+mov     ecx, [ecx+4]
+mov     ecx, [ecx]
+mov     edx, [esp+0CCh+var_20]
+mov     edx, [edx+0Ch]
+mov     [esp+0CCh+var_CC], eax
+mov     [esp+0CCh+var_C8], ecx
+mov     [esp+0CCh+var_C4], edx
+call    BN_bin2bn
+mov     ecx, [esp+0CCh+var_20]
+mov     [ecx+0Ch], eax
+mov     eax, [esp+0CCh+var_20]
+cmp     dword ptr [eax+0Ch], 0
+jnz     loc_818D24E
+mov     eax, 10h
+mov     ecx, 92h
+mov     edx, 3
+lea     esi, aEc_asn1_c ; "ec_asn1.c"
+mov     edi, 41Bh
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 3
+mov     [esp+0CCh+var_C0], esi
+mov     [esp+0CCh+var_BC], 41Bh
+mov     [esp+0CCh+var_5C], eax
+mov     [esp+0CCh+var_60], ecx
+mov     [esp+0CCh+var_64], edx
+mov     [esp+0CCh+var_68], edi
+call    ERR_put_error
+jmp     loc_818D597
+jmp     loc_818D2AA
+mov     eax, 10h
+mov     ecx, 92h
+mov     edx, 7Dh
+lea     esi, aEc_asn1_c ; "ec_asn1.c"
+mov     edi, 41Fh
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 7Dh
+mov     [esp+0CCh+var_C0], esi
+mov     [esp+0CCh+var_BC], 41Fh
+mov     [esp+0CCh+var_6C], eax
+mov     [esp+0CCh+var_70], ecx
+mov     [esp+0CCh+var_74], edx
+mov     [esp+0CCh+var_78], edi
+call    ERR_put_error
+jmp     loc_818D597
+mov     eax, [esp+0CCh+var_20]
+cmp     dword ptr [eax+8], 0
+jz      loc_818D2D0
+mov     eax, [esp+0CCh+var_20]
+mov     eax, [eax+8]
+mov     [esp+0CCh+var_CC], eax
+call    EC_POINT_clear_free
+mov     eax, [esp+0CCh+var_20]
+mov     eax, [eax+4]
+mov     [esp+0CCh+var_CC], eax
+call    EC_POINT_new
+mov     ecx, [esp+0CCh+var_20]
+mov     [ecx+8], eax
+mov     eax, [esp+0CCh+var_20]
+cmp     dword ptr [eax+8], 0
+jnz     loc_818D34E
+mov     eax, 10h
+mov     ecx, 92h
+lea     edx, aEc_asn1_c ; "ec_asn1.c"
+mov     esi, 427h
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 10h
+mov     [esp+0CCh+var_C0], edx
+mov     [esp+0CCh+var_BC], 427h
+mov     [esp+0CCh+var_7C], eax
+mov     [esp+0CCh+var_80], ecx
+mov     [esp+0CCh+var_84], esi
+call    ERR_put_error
+jmp     loc_818D597
+mov     eax, [esp+0CCh+var_24]
+cmp     dword ptr [eax+0Ch], 0
+jz      loc_818D4B0
+mov     eax, [esp+0CCh+var_24]
+mov     eax, [eax+0Ch]
+mov     eax, [eax+8]
+mov     [esp+0CCh+var_28], eax
+mov     eax, [esp+0CCh+var_24]
+mov     eax, [eax+0Ch]
+mov     eax, [eax]
+mov     [esp+0CCh+var_2C], eax
+cmp     [esp+0CCh+var_2C], 0
+jg      loc_818D3F1
+mov     eax, 10h
+mov     ecx, 92h
+mov     edx, 64h
+lea     esi, aEc_asn1_c ; "ec_asn1.c"
+mov     edi, 435h
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 64h
+mov     [esp+0CCh+var_C0], esi
+mov     [esp+0CCh+var_BC], 435h
+mov     [esp+0CCh+var_88], eax
+mov     [esp+0CCh+var_8C], ecx
+mov     [esp+0CCh+var_90], edx
+mov     [esp+0CCh+var_94], edi
+call    ERR_put_error
+jmp     loc_818D597
+mov     eax, 0
+mov     ecx, [esp+0CCh+var_28]
+movzx   ecx, byte ptr [ecx]
+and     ecx, 0FFFFFFFEh
+mov     edx, [esp+0CCh+var_20]
+mov     [edx+14h], ecx
+mov     ecx, [esp+0CCh+var_20]
+mov     ecx, [ecx+4]
+mov     edx, [esp+0CCh+var_20]
+mov     edx, [edx+8]
+mov     esi, [esp+0CCh+var_28]
+mov     edi, [esp+0CCh+var_2C]
+mov     [esp+0CCh+var_CC], ecx
+mov     [esp+0CCh+var_C8], edx
+mov     [esp+0CCh+var_C4], esi
+mov     [esp+0CCh+var_C0], edi
+mov     [esp+0CCh+var_BC], 0
+mov     [esp+0CCh+var_98], eax
+call    EC_POINT_oct2point
+cmp     eax, 0
+jnz     loc_818D4AB
+mov     eax, 10h
+mov     ecx, 92h
+lea     edx, aEc_asn1_c ; "ec_asn1.c"
+mov     esi, 43Ch
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 10h
+mov     [esp+0CCh+var_C0], edx
+mov     [esp+0CCh+var_BC], 43Ch
+mov     [esp+0CCh+var_9C], eax
+mov     [esp+0CCh+var_A0], ecx
+mov     [esp+0CCh+var_A4], esi
+call    ERR_put_error
+jmp     loc_818D597
+jmp     loc_818D56B
+mov     eax, 0
+mov     ecx, [esp+0CCh+var_20]
+mov     ecx, [ecx+4]
+mov     edx, [esp+0CCh+var_20]
+mov     edx, [edx+8]
+mov     esi, [esp+0CCh+var_20]
+mov     esi, [esi+0Ch]
+mov     [esp+0CCh+var_CC], ecx
+mov     [esp+0CCh+var_C8], edx
+mov     [esp+0CCh+var_C4], esi
+mov     [esp+0CCh+var_C0], 0
+mov     [esp+0CCh+var_BC], 0
+mov     [esp+0CCh+var_B8], 0
+mov     [esp+0CCh+var_A8], eax
+call    EC_POINT_mul
+cmp     eax, 0
+jnz     loc_818D558
+mov     eax, 10h
+mov     ecx, 92h
+lea     edx, aEc_asn1_c ; "ec_asn1.c"
+mov     esi, 442h
+mov     [esp+0CCh+var_CC], 10h
+mov     [esp+0CCh+var_C8], 92h
+mov     [esp+0CCh+var_C4], 10h
+mov     [esp+0CCh+var_C0], edx
+mov     [esp+0CCh+var_BC], 442h
+mov     [esp+0CCh+var_AC], eax
+mov     [esp+0CCh+var_B0], ecx
+mov     [esp+0CCh+var_B4], esi
+call    ERR_put_error
+jmp     loc_818D597
+mov     eax, [esp+0CCh+var_20]
+mov     ecx, [eax+10h]
+or      ecx, 2
+mov     [eax+10h], ecx
+cmp     [esp+0CCh+var_10], 0
+jz      loc_818D58C
+mov     eax, [esp+0CCh+var_20]
+mov     ecx, [esp+0CCh+var_10]
+mov     [ecx], eax
+mov     [esp+0CCh+var_1C], 1
+cmp     [esp+0CCh+var_1C], 0
+jnz     loc_818D5FA
+cmp     [esp+0CCh+var_20], 0
+jz      loc_818D5EF
+cmp     [esp+0CCh+var_10], 0
+jz      loc_818D5E0
+mov     eax, [esp+0CCh+var_10]
+mov     eax, [eax]
+cmp     eax, [esp+0CCh+var_20]
+jz      loc_818D5EF
+mov     eax, [esp+0CCh+var_20]
+mov     [esp+0CCh+var_CC], eax
+call    EC_KEY_free
+mov     [esp+0CCh+var_20], 0
+cmp     [esp+0CCh+var_24], 0
+jz      loc_818D61A
+mov     eax, [esp+0CCh+var_24]
+mov     [esp+0CCh+var_CC], eax
+call    EC_PRIVATEKEY_free
+mov     eax, [esp+0CCh+var_20]
+mov     [esp+0CCh+var_C], eax
+mov     eax, [esp+0CCh+var_C]
+add     esp, 0C4h
+pop     esi
+pop     edi
+retn
