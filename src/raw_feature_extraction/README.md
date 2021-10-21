@@ -75,5 +75,5 @@ For each valid .idb or .i64 file, it would call feature_extraction.py to extract
 
 
 ### Others:
-Other files are testing files for different purposes
+TODO
 
