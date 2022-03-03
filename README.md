@@ -10,7 +10,7 @@ This is the repository for our BugGraph project. Here are the [Paper](include/pa
 
 
 ## Authors
-Yuede Ji, email: yuedeji@gwu.edu
+Yuede Ji, email: yuede.ji@unt.edu
 
 Lei Cui, email: cuilei@gwu.edu
 
